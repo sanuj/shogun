@@ -65,6 +65,7 @@ CCombinedKernel::~CCombinedKernel()
 
 bool CCombinedKernel::init(CFeatures* l, CFeatures* r)
 {
+	CKernel* k=NULL;
 	/* if the specified features are not combined features, but a single other
 	 * feature type, assume that the caller wants to use all kernels on these */
 	if (l && r && l->get_feature_class()==r->get_feature_class() &&
@@ -78,8 +79,12 @@ bool CCombinedKernel::init(CFeatures* l, CFeatures* r)
 		CCombinedFeatures* combined_r=new CCombinedFeatures();
 		for (index_t i=0; i<get_num_subkernels(); ++i)
 		{
-			combined_l->append_feature_obj(l);
-			combined_r->append_feature_obj(r);
+			k = get_kernel(i);
+			if (k->get_kernel_type() != K_CUSTOM)
+			{
+				combined_l->append_feature_obj(l);
+				combined_r->append_feature_obj(r);
+			}
 		}
 
 		/* recursive call with constructed combined kernel */
@@ -98,7 +103,7 @@ bool CCombinedKernel::init(CFeatures* l, CFeatures* r)
 
 	CFeatures* lf=NULL;
 	CFeatures* rf=NULL;
-	CKernel* k=NULL;
+	// CKernel* k=NULL;
 
 	bool result=true;
 	index_t f_idx = 0;
