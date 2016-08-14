@@ -47,7 +47,7 @@
 
 #ifndef SWIGPYTHON
 PROTOCOLS_CUSTOMKERNEL(CustomKernel, float32_t, "f\0", NPY_FLOAT32)
-#ifndef SWIGPYTHON
+#endif
 
 %rename(CustomKernel) CCustomKernel;
 
