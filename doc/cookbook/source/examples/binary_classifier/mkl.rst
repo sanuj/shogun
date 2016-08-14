@@ -20,35 +20,35 @@ Example
 
 Imagine we have files with training and test data. We create CDenseFeatures (here 64 bit floats aka RealFeatures) and :sgclass:`CBinaryLabels` as
 
-.. sgexample:: multiple_kernel_learning.sg:create_features
+.. sgexample:: mkl.sg:create_features
 
 Then we create indvidual kernels like :sgclass:`CPolyKernel`, precomputed :sgclass:`CCustomKernel` and :sgclass:`CGaussianKernel` which will be later combined in one :sgclass:`CCombinedKernel`.
 
-.. sgexample:: multiple_kernel_learning.sg:create_kernel
+.. sgexample:: mkl.sg:create_kernel
 
 We create an instance of :sgclass:`CCombinedKernel` and append the :sgclass:`CKernel` objects.
 
-.. sgexample:: multiple_kernel_learning.sg:create_combined_train
+.. sgexample:: mkl.sg:create_combined_train
 
 We create an object of :sgclass:`CMKLClassification`, provide the combined kernel and labels before training it.
 
-.. sgexample:: multiple_kernel_learning.sg:train_mkl
+.. sgexample:: mkl.sg:train_mkl
 
 After training, we can extract :math:`\beta`, SVM coefficients :math:`\alpha` and :math:`b`.
 
-.. sgexample:: multiple_kernel_learning.sg:extract_weights
+.. sgexample:: mkl.sg:extract_weights
 
 We update the :sgclass:`CCombinedKernel` object for testing data. We also need to update the :sgclass:`CCustomKernel` object because it was precomputed.
 
-.. sgexample:: multiple_kernel_learning.sg:create_combined_test
+.. sgexample:: mkl.sg:create_combined_test
 
 We set the updated kernel and predict :sgclass:`CBinaryLabels` for test data.
 
-.. sgexample:: multiple_kernel_learning.sg:mkl_apply
+.. sgexample:: mkl.sg:mkl_apply
 
 Finally, we can evaluate test performance via e.g. :sgclass:`CAccuracyMeasure`.
 
-.. sgexample:: multiple_kernel_learning.sg:evaluate_accuracy
+.. sgexample:: mkl.sg:evaluate_accuracy
 
 ----------
 References
