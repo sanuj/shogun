@@ -45,7 +45,10 @@
 %rename(CommWordStringKernel) CCommWordStringKernel;
 %rename(ConstKernel) CConstKernel;
 
+#ifndef SWIGPYTHON
 PROTOCOLS_CUSTOMKERNEL(CustomKernel, float32_t, "f\0", NPY_FLOAT32)
+#ifndef SWIGPYTHON
+
 %rename(CustomKernel) CCustomKernel;
 
 %rename(DiagKernel) CDiagKernel;
@@ -235,4 +238,6 @@ namespace shogun
 %include <shogun/kernel/string/SubsequenceStringKernel.h>
 %include <shogun/kernel/PeriodicKernel.h>
 
+#ifndef SWIGPYTHON
 EXTEND_CUSTOMKERNEL(CustomKernel, float32_t, NPY_FLOAT32)
+#endif
